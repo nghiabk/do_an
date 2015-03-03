@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hoc_ky: 1
+  ma_hp: MyString
+  ten_hp: MyString
+  tc: 1
+  lop_hoc: 1
+  diem_qt: 1.5
+  diem_thi: 1.5
+  diem_chu: MyString
+
+two:
+  hoc_ky: 1
+  ma_hp: MyString
+  ten_hp: MyString
+  tc: 1
+  lop_hoc: 1
+  diem_qt: 1.5
+  diem_thi: 1.5
+  diem_chu: MyString
