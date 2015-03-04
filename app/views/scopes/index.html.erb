@@ -1,0 +1,25 @@
+<% provide(:title, "diem") %>
+<table border="1" >
+  <tr>
+    <td><b>Hoc ky</b></td>
+    <td><b>Ma HP</b></td>
+    <td><b>Ten HP</b></td>
+    <td><b>TC</b></td>
+    <td><b>Lop hoc</b></td>
+    <td><b>Diem QT</b></td>
+    <td><b>Diem thi</b></td>
+    <td><b>Diem chu</b></td>
+  </tr>
+  <% @scopes.each do |scope| %>
+  <tr>
+    <td><%= scope.hoc_ky %></td>
+    <td><%= scope.ma_hp %></td>
+    <td><%= scope.ten_hp %></td>
+    <td><%= scope.tc %></td>
+    <td><%= scope.lop_hoc %></td>
+    <td><%= scope.diem_qt %></td>
+    <td><%= scope.diem_thi %></td>
+    <td><%= scope.diem_chu %></td>
+  </tr>
+  <% end %>
+</table>

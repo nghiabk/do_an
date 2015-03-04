@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 	attr_accessor :remember_token
 	validates :shsv, presence: true
 	has_secure_password
+	has_many :scopes
 	validates :password, length: { minimum: 6 }, allow_blank: true
 
 	def User.digest string

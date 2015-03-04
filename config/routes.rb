@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
  
+  get 'scopes/index'
+
   get 'sessions/new'
 
   root 'static_pages#home'
