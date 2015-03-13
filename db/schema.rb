@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304150522) do
+ActiveRecord::Schema.define(version: 20150306015257) do
 
   create_table "scopes", force: true do |t|
     t.integer  "hoc_ky"
@@ -34,7 +34,12 @@ ActiveRecord::Schema.define(version: 20150304150522) do
     t.string   "password_digest"
     t.string   "name"
     t.string   "remember_digest"
-    t.datetime "ngay_sinh"
+    t.datetime "start_date"
+    t.string   "email"
+    t.integer  "kv_id"
+    t.integer  "lop_sv_id"
+    t.datetime "birth_day"
+    t.boolean  "admin"
   end
 
 end

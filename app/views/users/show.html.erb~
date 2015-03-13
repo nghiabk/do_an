@@ -1,4 +1,0 @@
-<% provide(:title, @user.name) %>
-<p>Mã số sinh viên: <%= @user.shsv %></p>
-<p>Tên sinh viên: <%= @user.name %></p>
-<p>Ngày sinh: <%= @user.ngay_sinh %></p
