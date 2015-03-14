@@ -1,6 +1,6 @@
 class ScopesController < ApplicationController
-  def index
-  	@scopes = current_user.scopes.all
-  	# @scopes = Scope.all
+	before_action :logged_in_user, only: [:show]
+  def show
+  	@scopes = current_user.scopes
   end
 end

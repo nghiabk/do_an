@@ -11,33 +11,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306015257) do
+ActiveRecord::Schema.define(version: 20150314095102) do
 
-  create_table "scopes", force: true do |t|
-    t.integer  "hoc_ky"
-    t.string   "ma_hp"
-    t.string   "ten_hp"
-    t.integer  "tc"
-    t.integer  "lop_hoc"
-    t.float    "diem_qt"
-    t.float    "diem_thi"
-    t.string   "diem_chu"
+  create_table "classes", force: true do |t|
+    t.string   "name"
+    t.integer  "count"
+    t.integer  "faculty_id"
+    t.string   "address"
+    t.string   "specialized"
+    t.datetime "start_year"
+    t.datetime "end_year"
+    t.integer  "semester"
+  end
+
+  create_table "courses", force: true do |t|
+    t.integer  "faculty_id"
+    t.string   "name"
+    t.integer  "semester"
+    t.integer  "class_id"
+    t.integer  "max"
+    t.integer  "count"
+    t.boolean  "status"
+    t.string   "teacher"
+    t.integer  "subject_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+  end
+
+  create_table "faculties", force: true do |t|
+    t.string "name"
+  end
+
+  create_table "scopes", force: true do |t|
+    t.integer "semester"
+    t.string  "subject_id"
+    t.integer "count"
+    t.integer "class_id"
+    t.float   "middle_scope"
+    t.float   "end_scope"
+    t.string  "letter"
+    t.integer "user_id"
+    t.integer "course_id"
+  end
+
+  create_table "subjects", force: true do |t|
+    t.integer "faculty_id"
+    t.string  "name"
   end
 
   create_table "users", force: true do |t|
-    t.integer  "shsv"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "mssv"
     t.string   "password_digest"
     t.string   "name"
     t.string   "remember_digest"
     t.datetime "start_date"
     t.string   "email"
-    t.integer  "kv_id"
-    t.integer  "lop_sv_id"
+    t.integer  "faculty_id"
+    t.integer  "class_id"
     t.datetime "birth_day"
     t.boolean  "admin"
   end

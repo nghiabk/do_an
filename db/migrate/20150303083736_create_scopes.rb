@@ -1,16 +1,13 @@
 class CreateScopes < ActiveRecord::Migration
   def change
     create_table :scopes do |t|
-      t.integer :hoc_ky
-      t.string :ma_hp
-      t.string :ten_hp
-      t.integer :tc
-      t.integer :lop_hoc
-      t.float :diem_qt
-      t.float :diem_thi
-      t.string :diem_chu
-
-      t.timestamps
+      t.integer :semester
+      t.string :subject_id
+      t.integer :count
+      t.integer :class_id
+      t.float :middle_scope
+      t.float :end_scope
+      t.string :letter
     end
   end
 end

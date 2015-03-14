@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
  
-  get 'scopes/index'
+  get 'scopes/show'
 
   get 'sessions/new'
 

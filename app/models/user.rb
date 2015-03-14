@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
 	attr_accessor :remember_token
-	validates :shsv, presence: true
+	validates :mssv, presence: true
 	has_secure_password
 	has_many :scopes
-	validates :password, length: { minimum: 6 }, allow_blank: true
+	validates :password, length: {minimum: 6}, allow_blank: true
 
 	def User.digest string
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  faculty_id: 1
+  name: MyString
+  semester: 1
+  class_id: 1
+  max: 1
+  count: 1
+  status: false
+  teacher: MyString
+  subject_id: 1
+
+two:
+  faculty_id: 1
+  name: MyString
+  semester: 1
+  class_id: 1
+  max: 1
+  count: 1
+  status: false
+  teacher: MyString
+  subject_id: 1
