@@ -1,0 +1,17 @@
+<tr>
+  <td><%= course.faculty.name %></td>
+  <td><%= course.semester %></td>
+  <td><%= course.class_student.name %></td>
+  <td><%= course.max %></td>
+  <td><%= course.min %></td>
+  <td><%= course.count %></td>
+  <td><%= course.status %></td>
+  <td><%= course.teacher %></td>
+  <td><%= course.subject.name %></td>
+  <td><%= course.subject.count %></td>
+  <td><%= button_to "dang ky", {controller: "activities" ,action: "create", id: course.id}, method: :post %></td>
+  <td><%= link_to "Edit", edit_course_path(course) %></td>
+  <td><%= link_to "Delete", course, method: :delete, data: {confirm: "you sure?"}%></td>
+  <td></td>
+  <td></td>
+</tr>

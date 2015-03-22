@@ -1,0 +1,16 @@
+<% provide(:title, "new faculty") %>
+<h1>New Faculty</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@faculty, html: {multipart: true}) do |f| %>
+      <%= render 'shared/error_messages_4' %>
+
+      <%= f.label "Name faculty" %>
+      <%= f.text_field :name, placeholder: "Name subject", 
+      class: "form-control" %><br>
+      
+      <%= f.submit "Create faculty", class: "btn btn-primary" %> 
+    <% end %>
+  </div>
+</div>

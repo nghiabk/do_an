@@ -6,9 +6,9 @@
     <%= form_for(:session, url: login_path) do |f| %>
 
       <%= f.label :Username %>
-      <%= f.text_field :mssv, class: 'form-control' %>
+      <%= f.text_field :username, class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :Password %>
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :remember_me, class: "checkbox inline" do %>

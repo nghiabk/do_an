@@ -2,16 +2,15 @@ class CreateCourses < ActiveRecord::Migration
   def change
     create_table :courses do |t|
       t.integer :faculty_id
-      t.string :name
       t.integer :semester
-      t.integer :class_id
+      t.integer :class_student_id
       t.integer :max
+      t.integer :min
       t.integer :count
-      t.boolean :status
+      t.boolean :status ,default: "true"
       t.string :teacher
       t.integer :subject_id
-
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

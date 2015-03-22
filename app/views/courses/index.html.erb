@@ -1,0 +1,30 @@
+<% provide(:title, "Course") %>
+
+<%= link_to "Create course", new_course_path %>
+<br><br>
+<%= form_tag courses_path, method: :get do |f| %>
+  <strong>Faculty</strong>
+  <%= select_tag(:faculty_id, options_from_collection_for_select(Faculty.all.collect,"id","name"), prompt: "All", class: "form-control") %>
+  <%= submit_tag "Filter", class: "btn btn-primary" %>
+<% end %><br><br>
+
+<table border="1" >
+  <tr>
+    <td><b>Khoa vien</b></td>
+    <td><b>Hoc ky</b></td>
+    <td><b>Class</b></td>
+    <td><b>Max</b></td>
+    <td><b>Min</b></td>
+    <td><b>Da dang ky</b></td>
+    <td><b>Trang thai</b></td>
+    <td><b>Giao vien</b></td>
+    <td><b>Mon hoc</b></td>
+    <td><b>Tin chi</b></td>
+    <td><b> Dang ky </b></td>
+    <td><b> Edit </b></td>
+    <td><b> Delete </b></td>
+  </tr>
+  <%= render @courses %>
+  <%= will_paginate %>
+</table>
+<%= will_paginate %>

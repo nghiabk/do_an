@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  count: 1
+  faculty_id: 1
+  address: MyString
+  specialized: MyString
+  start_year: 2015-03-16 06:25:28
+  end_year: 2015-03-16 06:25:28
+  semester: 1
+
+two:
+  name: MyString
+  count: 1
+  faculty_id: 1
+  address: MyString
+  specialized: MyString
+  start_year: 2015-03-16 06:25:28
+  end_year: 2015-03-16 06:25:28
+  semester: 1

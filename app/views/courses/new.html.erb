@@ -1,0 +1,33 @@
+<% provide(:title, "new course") %>
+<h1>New course</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@course, html: {multipart: true}) do |f| %>
+      <%= render 'shared/error_messages_2' %>
+      
+      <%= f.label "Faculty" %>
+      <%= f.select(:faculty_id, options_from_collection_for_select(Faculty.all.collect,"id","name"),  class: "form-control") %>
+
+      <%= f.label "Subject" %>
+      <%= f.select(:subject_id, options_from_collection_for_select(Subject.all.collect,"id","name"),  class: "form-control") %>
+
+      <%= f.label "Class" %>
+      <%= f.select(:class_student_id, options_from_collection_for_select(ClassStudent.all.collect,"id","name"),  class: "form-control") %>
+
+      <%= f.label "Teacher" %>
+      <%= f.text_field :teacher, placeholder: "Teacher", 
+      class: "form-control" %><br>
+
+      <%= f.label "Semester" %>
+      <%= f.number_field :semester, class: "form-control" %>
+
+      <%= f.label "Max" %>
+      <%= f.number_field :max, in: 100...120, class: "form-control" %>
+
+      <%= f.label "Min" %>
+      <%= f.number_field :min, in: 20...30, class: "form-control" %>
+      
+      <%= f.submit "Create course", class: "btn btn-primary" %> 
+    <% end %>
+  </div>
+</div>
