@@ -5,13 +5,20 @@
   <td><%= course.max %></td>
   <td><%= course.min %></td>
   <td><%= course.count %></td>
-  <td><%= course.status %></td>
+  <td><%= course.state %></td>
   <td><%= course.teacher %></td>
   <td><%= course.subject.name %></td>
-  <td><%= course.subject.count %></td>
-  <td><%= button_to "dang ky", {controller: "activities" ,action: "create", id: course.id}, method: :post %></td>
+  <td><%= course.subject.credit %></td>
+  <td><%= course.day %></td>
+  <td>
+    <%= course.start_period %> - <%= course.end_period %>
+  </td>
+  
+  <td><%= button_to "dang ky", {controller: "activities" ,
+    action: "create", id: course.id}, method: :post %></td>
+    
   <td><%= link_to "Edit", edit_course_path(course) %></td>
-  <td><%= link_to "Delete", course, method: :delete, data: {confirm: "you sure?"}%></td>
+  <td><%= link_to "Delete", course, method: :delete, data: {confirm: "are you sure?"} %></td>
   <td></td>
   <td></td>
 </tr>

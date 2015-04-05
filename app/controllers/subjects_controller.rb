@@ -1,4 +1,7 @@
 class SubjectsController < ApplicationController
+  before_action :logged_in_user
+  before_action :verify_admin, only: [:new, :edit, :create, :update, :destroy]
+
   def index
     @subjects = Subject.paginate page: params[:page], per_page: 15
   end
@@ -6,14 +9,8 @@ class SubjectsController < ApplicationController
   def create
     @subject = Subject.new subject_params
     if @subject.save
-      # respond_to do |format|
-      #   format.html {redirect_to root_url, notice: "Subject is created"}
-      #   format.js
-      # end  
-      respond_to do |format|
-        format.html {redirect_to subjects_url, notice: "Book is created"}
-        format.js
-      end
+      redirect_to subjects_url
+      flash[:success] = "Create subject is success"
     else
       render 'new'
     end
@@ -39,12 +36,15 @@ class SubjectsController < ApplicationController
 
   def destroy
     Subject.find(params[:id]).destroy
-    flash[:success] = "subject is deleted"
-    redirect_to subjects_url
+    @subjects = Subject.all
+    respond_to do |format|
+      format.html 
+      format.js
+    end
   end
 
   private
   def subject_params
-    params.require(:subject).permit :faculty_id, :name, :count
+    params.require(:subject).permit :faculty_id, :name, :credit
   end
 end

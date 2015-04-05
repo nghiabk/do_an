@@ -1,16 +1,5 @@
-<%= link_to "Create subject", new_subject_path %><br>
-<% @subjects.each do |subject| %>
-<div class="show-result well">Book is created!</div>
-  <h3>
-    <%= subject.name %>
-    -- So tin chi: <%= subject.count %>
-  </h3>
-  <%= link_to "Edit", edit_subject_path(subject) %> |
-  <%= link_to "Delete", subject, method: :delete, data: {confirm: "you sure?"} %>
-  <br>
-<% end %>
-<%= will_paginate @subject %>
-
-<script type="text/javascript">
-  $(".show-result").hide();
-</script>
+<div id="subjects">
+  <%= link_to "Create subject", '#', onclick: "show_subject_form()", id: "display-form" %><br>
+  <%= render @subjects %>
+  <%= will_paginate @subject %>
+</div>

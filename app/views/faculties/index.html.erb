@@ -2,7 +2,7 @@
 <% @faculties.each do |faculty| %>
   <h3><%= faculty.name %></h3>
   <%= link_to "Edit", edit_faculty_path(faculty) %> |
-  <%= link_to "Delete", faculty, method: :delete, data: {confirm: "you sure?"} %>
+  <%= link_to "Delete", faculty, method: :delete, data: {confirm: "are you sure?"} %>
   <br>
 <% end %>
 <%= will_paginate @faculty %>

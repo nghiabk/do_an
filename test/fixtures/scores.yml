@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  semester: 1
+  credit: 1
+  middle_score: 1.5
+  end_score: 1.5
+  letter_score: MyString
+  user_id: 1
+  course_id: 1
+  subject_id: 1
+
+two:
+  semester: 1
+  credit: 1
+  middle_score: 1.5
+  end_score: 1.5
+  letter_score: MyString
+  user_id: 1
+  course_id: 1
+  subject_id: 1

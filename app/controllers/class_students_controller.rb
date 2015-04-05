@@ -1,4 +1,7 @@
 class ClassStudentsController < ApplicationController
+  before_action :logged_in_user
+  before_action :verify_admin, only: [:new, :edit, :create, :update, :destroy]
+
   def index
     @class_students = ClassStudent.paginate page: params[:page], per_page: 15
   end

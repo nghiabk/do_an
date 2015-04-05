@@ -1,0 +1,18 @@
+<% provide(:title, "new table score") %>
+<h1>New table score</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @total_score do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+
+      <%= f.label "Semester" %>
+      <%= f.number_field :semester, class: "form-control" %>
+
+      <%= f.label "User" %>
+      <%= f.select(:user_id, options_from_collection_for_select(@users,"id","username"),  
+      class: "form-control") %>
+
+      <%= f.submit "Create score", class: "btn btn-primary" %> 
+    <% end %>
+  </div>
+</div>

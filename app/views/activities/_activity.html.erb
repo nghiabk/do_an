@@ -1,0 +1,13 @@
+
+<tr>
+  <td><%= activity.user.username %></td>
+  <td><%= activity.course.subject.name %></td>
+  <td><%= activity.course.teacher %></td>
+  <td><%= activity.course.subject.credit %></td>
+  <td><%= activity.day %></td>
+  <td><%= activity.start_period %> - <%= activity.end_period %></td>
+  <td>
+  	<%= link_to "Delete", activity, method: :delete, 
+  	data: {confirm: "are you sure?"},  remote: true %>
+  </td>
+</tr>

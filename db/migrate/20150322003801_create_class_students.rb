@@ -5,8 +5,8 @@ class CreateClassStudents < ActiveRecord::Migration
       t.integer :count
       t.string :address
       t.string :specialized
-      t.datetime :start_year
-      t.datetime :end_year
+      t.date :start_year
+      t.date :end_year
       t.integer :semester
       t.references :faculty, index: true
 

@@ -1,0 +1,7 @@
+<div class="subject">
+  <b>Name: </b><%= subject.name %><br>
+  <b>Tin chi: </b><%= subject.credit %><br>
+</div>
+<%= link_to "Edit", edit_subject_path(subject) %> |
+<%= link_to "delete", subject_path(subject), method: :delete, remote: true %>
+<div class="clear"></div><br>

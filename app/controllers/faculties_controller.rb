@@ -1,4 +1,7 @@
 class FacultiesController < ApplicationController
+  before_action :logged_in_user
+  before_action :verify_admin, only: [:new, :edit, :create, :update, :destroy]
+  
   def index
     @faculties = Faculty.paginate page: params[:page], per_page: 15
   end
@@ -6,6 +9,7 @@ class FacultiesController < ApplicationController
   def create
     @faculty = Faculty.new faculty_params
     if @faculty.save
+      flash[:success] = "create faculty is success"
       redirect_to faculties_url
     else
       render 'new'

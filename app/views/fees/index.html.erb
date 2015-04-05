@@ -1,0 +1,5 @@
+<%= link_to "Create total score", new_fee_path %><br><br>
+<% @fees.each do |fee| %>
+semester:	<%= fee.semester %> |credit: <%= fee.total_credit %> |money: <%= fee.total_money %>
+<%= link_to "Edit", edit_fee_path(fee) %><br>
+<% end %>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  get 'activities/show'
-  get 'scopes/show'
+  get 'score' => 'table_scores#show'
+  get 'fee' => 'fees#show'
   get 'sessions/new'
   root 'static_pages#home'
   get 'help' => 'static_pages#help'
@@ -15,4 +15,8 @@ Rails.application.routes.draw do
   resources :subjects
   resources :activities
   resources :class_students
+  resources :scores
+  resources :fees
+  resources :table_scores
+  resources :total_scores
 end

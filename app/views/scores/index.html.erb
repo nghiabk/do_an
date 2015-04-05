@@ -1,0 +1,27 @@
+<% provide(:title, "Score") %>
+<%= link_to "Create score", new_score_path %><br><br>
+
+<table border="1" >
+  <tr>
+    <td><b>Hoc ky</b></td>
+    <td><b>Ma HP</b></td>
+    <td><b>Ten HP</b></td>
+    <td><b>Tin chi</b></td>
+    <td><b>Lop hoc</b></td>
+    <td><b>Diem QT</b></td>
+    <td><b>Diem thi</b></td>
+    <td><b>Diem chu</b></td>
+  </tr>
+  <% @scores.each do |score| %>
+  <tr>
+    <td><%= score.semester %></td>
+    <td><%= score.subject_id %></td>
+    <td><%= score.subject.name %></td>
+    <td><%= score.subject.credit %></td>
+    <td><%= score.course.id %></td>
+    <td><%= score.middle_score %></td>
+    <td><%= score.end_score %></td>
+    <td><%= score.letter_score %></td>
+  </tr>
+  <% end %>
+</table>

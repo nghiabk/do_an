@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_money: 1.5
+  total_credit: 1
+  semester: 1
+  cost: 1.5
+
+two:
+  total_money: 1.5
+  total_credit: 1
+  semester: 1
+  cost: 1.5

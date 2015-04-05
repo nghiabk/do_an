@@ -1,0 +1,35 @@
+<% provide(:title, "new score") %>
+<h1>New score</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@score, html: {multipart: true}) do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      
+      <%= f.label "Semester" %>
+      <%= f.select(:semester, options_for_select([['20101',20101],['20102',20102],
+      ['20111',20111],['20112',20112],['20121',20121],['20122',20122],['20131',20131]])) %>
+
+      <%= f.label "Subject" %>
+      <%= f.select(:subject_id, options_from_collection_for_select(Subject.all,"id","name"), class: "form-control") %>
+
+      <%= f.label "User" %>
+      <%= f.select(:user_id, options_from_collection_for_select(@users,"id","username"),  
+      class: "form-control") %>
+
+      <%= f.label "Course" %>
+      <%= f.select(:course_id, options_from_collection_for_select(Course.all,"id","id"), class: "form-control") %>
+
+      <%= f.label "Middle score" %>
+      <%= f.number_field :middle_score, in: 0...11, :step => 0.5, class: "form-control" %>
+      
+      <%= f.label "End score" %>
+      <%= f.number_field :end_score, in: 0...11, :step => 0.5, class: "form-control" %>
+
+      <%= f.label "Letter score" %>
+      <%= f.select(:letter_score, options_for_select([['D',1],['D+',1.5],['C',2],['C+',2.5],
+      ['B',3],['B+',3.5],['A',4],['A+',4]])) %>
+
+      <%= f.submit "Create score", class: "btn btn-primary" %> 
+    <% end %>
+  </div>
+</div>
