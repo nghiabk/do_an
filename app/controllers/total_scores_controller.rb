@@ -35,9 +35,11 @@ class TotalScoresController < ApplicationController
       temp_score += total_score
       temp_credit += total_credit
       cpa = (temp_score / temp_credit).round(2)
+      
       @total_score = TotalScore.new semester: params[:total_score][:semester],
       user_id: params[:total_score][:user_id], gpa: gpa, semester_credit: total_credit,
       semester_score: total_score, cpa: cpa
+
       @total_score.save
       redirect_to total_scores_url
     end

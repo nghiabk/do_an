@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
     assoc.has_many :total_scores
     assoc.has_many :activities
     assoc.has_one :discipline
+    assoc.has_many :requests
   end
   validates :password, length: {minimum: 6}, allow_blank: true
   validates :username, presence: true

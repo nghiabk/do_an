@@ -1,5 +1,20 @@
-<%= link_to "Create total score", new_fee_path %><br><br>
+<%= link_to "Create fee for user", new_fee_path %><br><br>
+<table border="1" >
+  <tr>
+    <td><b>Semester</b></td>
+    <td><b>Username</b></td>
+    <td><b>Cost</b></td>
+    <td><b>Total credit</b></td>
+    <td><b>Total money</b></td>
+    <td><b>Edit</b></td>
+  </tr>
+  <%= render @fees %>
+  <%= will_paginate %>
+</table>
+<%= will_paginate %>
+
+
 <% @fees.each do |fee| %>
-semester:	<%= fee.semester %> |credit: <%= fee.total_credit %> |money: <%= fee.total_money %>
+semester: <%= fee.semester %> |credit: <%= fee.total_credit %> |money: <%= fee.total_money %>
 <%= link_to "Edit", edit_fee_path(fee) %><br>
 <% end %>

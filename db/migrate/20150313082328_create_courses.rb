@@ -6,7 +6,7 @@ class CreateCourses < ActiveRecord::Migration
       t.integer :class_student_id
       t.integer :max
       t.integer :min
-      t.integer :count ,default: 0
+      t.integer :count
       t.boolean :state ,default: "true"
       t.string :address
       t.integer :start_week

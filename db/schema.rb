@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402135314) do
+ActiveRecord::Schema.define(version: 20150408143719) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "credit"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150402135314) do
     t.integer  "class_student_id"
     t.integer  "max"
     t.integer  "min"
-    t.integer  "count",            default: 0
+    t.integer  "count"
     t.boolean  "state",            default: true
     t.string   "address"
     t.integer  "start_week"
@@ -81,13 +81,29 @@ ActiveRecord::Schema.define(version: 20150402135314) do
   end
 
   create_table "fees", force: :cascade do |t|
-    t.float    "total_money"
-    t.integer  "total_credit"
+    t.integer  "user_id"
     t.integer  "semester"
     t.float    "cost"
-    t.integer  "user_id"
+    t.float    "total_money"
+    t.integer  "total_credit"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.string   "released_on"
+    t.integer  "price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string   "class_name"
+    t.integer  "class_student_id"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "scores", force: :cascade do |t|
@@ -113,11 +129,12 @@ ActiveRecord::Schema.define(version: 20150402135314) do
     t.float    "finish_score"
     t.integer  "semester"
     t.integer  "credit"
+    t.boolean  "again",        default: false
     t.integer  "activity_id"
     t.integer  "user_id"
     t.integer  "score_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "table_scores", ["score_id"], name: "index_table_scores_on_score_id"

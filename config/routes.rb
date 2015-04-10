@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'products/index'
+
   get 'score' => 'table_scores#show'
   get 'fee' => 'fees#show'
   get 'sessions/new'
@@ -19,4 +21,6 @@ Rails.application.routes.draw do
   resources :fees
   resources :table_scores
   resources :total_scores
+  resources :requests
+  resources :products
 end

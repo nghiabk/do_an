@@ -63,7 +63,7 @@ class ActivitiesController < ApplicationController
       subject_id: @course.subject_id, semester: @course.semester,
       end_period: @course.end_period, start_period: @course.start_period,
       credit: @course.subject.credit, day: @course.day
-      if Activity.find_by(subject_id: @course.subject_id, user_id: current_user)
+      if Activity.find_by subject_id: @course.subject_id, user_id: current_user
         @activity.again = "true"
       else
         @activity.again = "false" 
@@ -71,8 +71,8 @@ class ActivitiesController < ApplicationController
     
       @activity.save
       @score = Score.find_by course_id: @course
-      @table_score = TableScore.new(user: current_user, score: @score,
-      semester: @course.semester, credit: @course.subject.credit, activity: @activity)
+      @table_score = TableScore.new user: current_user, score: @score,
+      semester: @course.semester, credit: @course.subject.credit, activity: @activity
       @table_score.save
       flash[:success] = "Ban da dang ky thanh cong"
       redirect_to courses_url

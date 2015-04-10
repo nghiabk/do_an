@@ -1,6 +1,12 @@
 class TableScoresController < ApplicationController
   def index
     @table_scores = TableScore.paginate page: params[:page], per_page: 15
+    # @table_scores = TableScore.all
+    respond_to do |format|
+      format.html
+      format.csv {send_data @table_scores.to_csv}
+      format.xls
+    end
   end
 
   def new

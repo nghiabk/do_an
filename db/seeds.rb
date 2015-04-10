@@ -3,13 +3,13 @@ def create_admin
 end
 
 def create_user
-  5.times do |n|
+  10.times do |n|
     name = Faker::Name.name
     mssv = 20120001 + n
     username = mssv.to_s
     email = "#{mssv}@student.hust.edu.vn"
     User.create!(username: username, name: name, password: "123456", 
-    start_date: '2010-1-1', email: email, faculty_id: 20101, class_student_id: 1,
+    start_date: '2010-1-1', email: email, faculty_id: 1, class_student_id: 1,
     birth_day: '20-10-1991', admin: "false")
   end
 end
@@ -63,6 +63,9 @@ def create_class_student
   end 
 end
 
+10.times do |n|
+  Product.create name: "abc", released_on: "cbd", price: n+10
+end
 
 
 create_admin

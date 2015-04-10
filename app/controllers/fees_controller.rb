@@ -1,6 +1,6 @@
 class FeesController < ApplicationController
   def index
-    @fees = Fee.all
+    @fees = Fee.paginate page: params[:page], per_page: 15
   end
 
   def show

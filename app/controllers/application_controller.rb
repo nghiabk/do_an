@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
-  # total_credit = 0
-  # total_credit_again = 0
 
   def calculate a,b
     (a * 0.3 + b * 0.7).round(1)
@@ -22,12 +20,12 @@ class ApplicationController < ActionController::Base
   	end
 
     def verify_admin
-      redirect_to root_url unless current_user.admin?
       # flash[:danger] = "Ban khong phai la admin"
+      redirect_to root_url unless current_user.admin?
     end
 
     def verify_user
-      redirect_to root_url if current_user.admin?
       # flash[:danger] = "Ban khong phai la user"
+      redirect_to root_url if current_user.admin?
     end
 end
