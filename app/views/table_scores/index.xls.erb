@@ -11,6 +11,8 @@
         <Cell><Data ss:Type="String">MSSV</Data></Cell>
         <Cell><Data ss:Type="String">User</Data></Cell>
         <Cell><Data ss:Type="String">Semester</Data></Cell>
+        <Cell><Data ss:Type="String">Subject</Data></Cell>
+        <Cell><Data ss:Type="String">Credit</Data></Cell>
         <Cell><Data ss:Type="String">Middle score</Data></Cell>
         <Cell><Data ss:Type="String">End score</Data></Cell>
         <Cell><Data ss:Type="String">Finish score</Data></Cell>
@@ -21,6 +23,8 @@
         <Cell><Data ss:Type="Number"><%= table_score.user.username %></Data></Cell>
         <Cell><Data ss:Type="String"><%= table_score.user.name %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= table_score.semester %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= table_score.score.subject.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= table_score.score.subject.credit %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= table_score.middle_score %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= table_score.end_score %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= table_score.finish_score %></Data></Cell>

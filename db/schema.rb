@@ -83,11 +83,11 @@ ActiveRecord::Schema.define(version: 20150408143719) do
   create_table "fees", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "semester"
-    t.float    "cost"
-    t.float    "total_money"
+    t.integer  "cost",         default: 100000
     t.integer  "total_credit"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "total_money"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "products", force: :cascade do |t|

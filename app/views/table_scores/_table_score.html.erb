@@ -1,8 +1,10 @@
 <tr>
   <td><%= table_score.user.name %></td>
   <td><%= table_score.semester %></td>
+  <td><%= table_score.score.subject.name %></td>
+  <td><%= table_score.score.subject.credit %></td>
   <td><%= table_score.middle_score %></td>
   <td><%= table_score.end_score %></td>
   <td><%= table_score.finish_score %></td>
-  <td><%= link_to "Edit", edit_table_score_path(table_score)  %></td>
+  <td><%= link_to "Edit", edit_table_score_path(table_score) %></td>
 </tr>

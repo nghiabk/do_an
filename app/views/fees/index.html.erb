@@ -1,20 +1,19 @@
+<% provide(:title, "Fees") %>
 <%= link_to "Create fee for user", new_fee_path %><br><br>
+<p>
+  Download:
+  <%= link_to "CSV", fees_path(format: "csv") %> |
+  <%= link_to "Excel", fees_path(format: "xls") %>
+</p>
+
 <table border="1" >
   <tr>
     <td><b>Semester</b></td>
-    <td><b>Username</b></td>
+    <td><b>Name</b></td>
+    <td><b>MSSV</b></td>
     <td><b>Cost</b></td>
     <td><b>Total credit</b></td>
-    <td><b>Total money</b></td>
-    <td><b>Edit</b></td>
+    <td><b>Total money</b></td>  
   </tr>
-  <%= render @fees %>
-  <%= will_paginate %>
+  <%= render @fees %> 
 </table>
-<%= will_paginate %>
-
-
-<% @fees.each do |fee| %>
-semester: <%= fee.semester %> |credit: <%= fee.total_credit %> |money: <%= fee.total_money %>
-<%= link_to "Edit", edit_fee_path(fee) %><br>
-<% end %>

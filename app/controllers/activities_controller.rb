@@ -13,14 +13,14 @@ class ActivitiesController < ApplicationController
     @activity = Activity.same_time(current_user, @course)
 
     @activity.each do |activity|
-      if activity.start_period <= @course.end_period && activity.end_period >= @course.end_period 
+      if activity.start_period < @course.end_period && activity.end_period >= @course.end_period 
         index += 1
       elsif activity.start_period <= @course.start_period && activity.end_period > @course.start_period
         index += 1
       elsif activity.start_period >= @course.start_period && activity.end_period <= @course.end_period
         index += 1
-      elsif activity.start_period <= @course.end_period && activity.end_period >= @course.end_period
-        index += 1
+      # elsif activity.start_period < @course.end_period && activity.end_period >= @course.end_period
+      #   index += 1
       end
     end
 
@@ -71,7 +71,7 @@ class ActivitiesController < ApplicationController
     
       @activity.save
       @score = Score.find_by course_id: @course
-      @table_score = TableScore.new user: current_user, score: @score,
+      @table_score = TableScore.new user: current_user, score: @score, again: @activity.again,
       semester: @course.semester, credit: @course.subject.credit, activity: @activity
       @table_score.save
       flash[:success] = "Ban da dang ky thanh cong"

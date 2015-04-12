@@ -1,7 +1,9 @@
 <% provide(:title, "Course") %>
+<%= link_to "Create course", new_admin_course_path %>
+<br><br>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_tag courses_path, method: :get do |f| %>
+    <%= form_tag admin_courses_path, method: :get do |f| %>
       <strong>Faculty</strong>
       <%= select_tag :faculty_id, options_from_collection_for_select(Faculty.all.collect,"id","name"), prompt: "All", class: "form-control" %>
       <%= submit_tag "Filter", class: "btn btn-primary" %>
@@ -22,30 +24,10 @@
     <td><b>Tin chi</b></td>
     <td><b>Thu</b></td>
     <td><b> Time </b></td>
-    <td><b> Dang ky </b></td>  
+    <td><b> Sua </b></td>
+    <td><b> Xoa </b></td>
   </tr>
   <%= render @courses %>
   <%= will_paginate %>
 </table>
 <%= will_paginate %>
-<br><br><br><br><br><br><br><br>
-<table border="1">
-  <tr>
-    <td><b>User</b></td>
-    <td><b>Lop</b></td>
-    <td><b>Giao vien</b></td>
-    <td><b>Tin chi</b></td>
-    <td><b>Thu</b></td>
-    <td><b>Thoi gian</b></td>
-    <td><b>Xoa lop</b></td>
-  </tr>
-  <div class= "activities">
-      <%= render @activities %>
-      </div>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td><b><%= @activities.sum(:credit) %></b></td>
-  </tr>
-</table>

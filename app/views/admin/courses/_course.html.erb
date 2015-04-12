@@ -13,7 +13,6 @@
   <td>
     <%= course.start_period %> - <%= course.end_period %>
   </td>
-  <td>
-    <%= button_to "dang ky", {controller: "activities" , action: "create", id: course.id}, method: :post %>
-  </td>
+  <td><%= link_to "Edit", edit_admin_course_path(course) %></td>
+  <td><%= link_to "Delete", course, method: :delete, data: {confirm: "are you sure?"} %></td>
 </tr>

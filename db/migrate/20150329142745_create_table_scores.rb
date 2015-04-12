@@ -6,7 +6,7 @@ class CreateTableScores < ActiveRecord::Migration
       t.float :finish_score
       t.integer :semester
       t.integer :credit
-      t.boolean :again, default: "f"
+      t.boolean :again
       t.integer :activity_id
       t.references :user, index: true
       t.references :score, index: true

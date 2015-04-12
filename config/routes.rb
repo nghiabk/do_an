@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'products/index'
 
   get 'score' => 'table_scores#show'
-  get 'fee' => 'fees#show'
+  get 'fee_show' => 'fees#show'
   get 'sessions/new'
   root 'static_pages#home'
   get 'help' => 'static_pages#help'
@@ -18,9 +18,18 @@ Rails.application.routes.draw do
   resources :activities
   resources :class_students
   resources :scores
-  resources :fees
   resources :table_scores
   resources :total_scores
   resources :requests
-  resources :products
+  resources :fees 
+
+  resources :products do
+    collection { post :import }
+  end
+
+  namespace :admin do
+    # root 'requests#index'
+    resources :courses, except: [:show]
+  end
+
 end

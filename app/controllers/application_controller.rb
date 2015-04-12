@@ -3,11 +3,16 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def calculate a,b
-    (a * 0.3 + b * 0.7).round(1)
+    c = (a * 0.3 + b * 0.7).round(1)
+    if c >= 4
+      return c
+    else
+      return 0
+    end
   end
 
   def money_fee a,b
-    a*100 + b * 150
+    a*100000 + b * 150000
   end
 
   private
@@ -20,7 +25,6 @@ class ApplicationController < ActionController::Base
   	end
 
     def verify_admin
-      # flash[:danger] = "Ban khong phai la admin"
       redirect_to root_url unless current_user.admin?
     end
 

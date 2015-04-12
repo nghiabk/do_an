@@ -1,23 +1,19 @@
-class CoursesController < ApplicationController
-  before_action :logged_in_user
-  before_action :verify_admin, only: [:new, :edit, :create, :update, :destroy]
-
-  def index
-    if params[:faculty_id].blank?
+class Admin::CoursesController < Admin::BaseAdminController
+	def index
+		if params[:faculty_id].blank?
       @courses = Course.paginate page: params[:page], per_page: 15
     else
       @faculty = Faculty.find params[:faculty_id]
       @courses = @faculty.courses.paginate page: params[:page], per_page: 15
     end
-    @activities = current_user.activities
-  end
+	end
 
-  def new
-    @course = Course.new
-  end
+	def new
+		@course = Course.new
+	end
 
-  def create
-    @course = Course.new course_params
+	def create
+		@course = Course.new course_params
     users = User.where class_student_id: params[:course][:class_student_id]
     @course.count = users.size
 
@@ -42,17 +38,17 @@ class CoursesController < ApplicationController
         semester: @course.semester, credit: @course.subject.credit, activity: @activity
         @table_score.save
       end
-      redirect_to courses_url
+      redirect_to admin_courses_url
     else
       render 'new'
     end
-  end
+	end
 
-  def edit
-    @course = Course.find params[:id]
-  end
+	def edit
+		@course = Course.find params[:id]
+	end
 
-  def update
+	def update
     @course = Course.find params[:id]
     @score = Score.find_by course_id: @course
     @table_score = TableScore.where score_id: @score
@@ -64,7 +60,7 @@ class CoursesController < ApplicationController
         table_score.update_attributes semester: @score.semester, credit: @score.credit
       end
       flash[:success] = "Course update"
-      redirect_to courses_url
+      redirect_to admin_courses_url
     else
       render 'edit'
     end
@@ -73,7 +69,7 @@ class CoursesController < ApplicationController
   def destroy
     Course.find(params[:id]).destroy
     flash[:success] = "Course is deleted"
-    redirect_to courses_url
+    redirect_to admin_courses_url
   end
 
   private
@@ -82,4 +78,4 @@ class CoursesController < ApplicationController
     :end_period, :class_student_id, :state, :teacher, :semester, :max, :min, 
     :day, scores_attributes: [:id, :semester, :credit]
   end
-end
+end 

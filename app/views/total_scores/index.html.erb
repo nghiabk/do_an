@@ -1,7 +1,11 @@
 <%= link_to "Create total score", new_total_score_path %><br><br>
-<% @total_scores.each do |total_score| %>
-	<%= total_score.semester %> |
-	<%= total_score.cpa %> |
-	<%= total_score.gpa %> | <%= link_to "Edit", edit_total_score_path(total_score) %>
-	<br><br>
-<% end %>
+<table border="1" >
+  <tr>
+    <td><b>Semester</b></td>
+    <td><b>Name</b></td>
+    <td><b>MSSV</b></td>
+    <td><b>CPA</b></td>
+    <td><b>GPA</b></td>  
+  </tr>
+  <%= render @total_scores %>
+</table>

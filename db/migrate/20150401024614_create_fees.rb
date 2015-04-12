@@ -3,9 +3,9 @@ class CreateFees < ActiveRecord::Migration
     create_table :fees do |t|
       t.integer :user_id
       t.integer :semester
-      t.float :cost
+      t.integer :cost, default: 100000
       t.integer :total_credit
-      t.float :total_money
+      t.integer :total_money
 
       t.timestamps null: false
     end

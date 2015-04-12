@@ -19,12 +19,6 @@ def create_discipline
     Discipline.create! user_id: n+1, level: rand(0..3)
   end
 end
-# def create_scope
-#   10.times do |n|
-#     Scope.create!(semester: 20101, subject_id: rand(1..10), count: 3, class_student_id: 1, middle_scope: 5, 
-#     end_scope: 4.5, letter: "D", user_id: 2, course_id: 1)
-#   end
-# end
 
 def create_faculty
   Faculty.create! name: "Cong nghe thong tin"
@@ -41,16 +35,18 @@ def create_subject
     Subject.create!  faculty_id: faculty.id,name: "toan cao cap-#{index+1}", credit: rand(2..4)
   end
 end
-# def create_course
-#   @faculty = Faculty.all
-#   @faculty.each do |faculty|
-#     20.times do |n|
-#       teacher = Faker::Name.name
-#       Course.create!(faculty_id: faculty.id, semester: 20101, student_id: 1, 
-#                       max: 120, count: 35, status: true, teacher: teacher, subject_id: 1)
-#     end
-#   end
-# end
+
+def create_course
+  @faculty = Faculty.all
+  @faculty.each do |faculty|
+    2.times do |n|
+      teacher = Faker::Name.name
+      Course.create! faculty_id: faculty.id, semester: 20101, class_student_id: 1, 
+                    max: 120, min:20, address: "D9-201",count: 0, state: true, teacher: teacher, 
+                    subject_id: 1, day: rand(2..7), start_period: 1, end_period: 4
+    end
+  end
+end
 
 def create_class_student
   @faculty = Faculty.all
@@ -74,3 +70,4 @@ create_discipline
 create_faculty
 create_subject
 create_class_student
+# create_course

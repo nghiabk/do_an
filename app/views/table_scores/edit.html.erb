@@ -2,14 +2,14 @@
 <h1>Edit table score</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  	<%= form_for(@table_score) do |f| %>
+  	<%= form_for @table_score do |f| %>
       <%= render "shared/error_messages", object: f.object %>
 
      	<%= f.label "Middle score" %>
-      <%= f.number_field :middle_score, :step => 0.5, class: "form-control" %>
+      <%= f.number_field :middle_score, in: 0..10 , :step => 0.5, class: "form-control" %>
       
       <%= f.label "End score" %>
-      <%= f.number_field :end_score, :step => 0.5, class: "form-control" %>
+      <%= f.number_field :end_score, in: 0..10 , :step => 0.5, class: "form-control" %>
 
       <%= f.submit "Edit course", class: "btn btn-primary" %> 
     <% end %>

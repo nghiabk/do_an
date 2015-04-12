@@ -2,12 +2,23 @@
   <tr>
     <td><b>Username</b></td>
     <td><b>Semester</b></td>
+    <td><b>Subject</b></td>
+    <td><b>Credit</b></td>
     <td><b>Middle score</b></td>
     <td><b>End score</b></td>
-    <td><b>Score</b></td>
-    <td><b>Edit</b></td>
+    <td><b>Finish score</b></td>
   </tr>
-  <%= render @table_scores %>
+  <% @table_scores.each do |table_score| %>
+    <tr>
+      <td><%= table_score.user.name %></td>
+      <td><%= table_score.semester %></td>
+      <td><%= table_score.score.subject.name %></td>
+      <td><%= table_score.score.subject.credit %></td>
+      <td><%= table_score.middle_score %></td>
+      <td><%= table_score.end_score %></td>
+      <td><%= table_score.finish_score %></td>
+    </tr>
+  <% end %>
 </table><br><br>
 
 <table border="1">
