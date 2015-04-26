@@ -8,7 +8,7 @@
           <% unless current_user.admin? %>
             <li><%= link_to "Score", score_path %></li>
             <li><%= link_to "Course", courses_path %></li>
-            <li><%= link_to "Fee", fee_show_path %></li>
+            <li><%= link_to "Fee", fees_path %></li>
           <% end %>
           <% if current_user.admin? %>
             <li class="dropdown">
@@ -21,13 +21,13 @@
                 <li><%= link_to "Student class", class_students_path %></li>
                 <li><%= link_to "Course", admin_courses_path %></li>
                 <li><%= link_to "Table score", table_scores_path %></li>
-                <li><%= link_to "Fee", fees_path %></li>
+                <li><%= link_to "Fee", admin_fees_path %></li>
               </ul>
             </li>
           <% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Account <b class="caret"></b>
+            <%= current_user.username %> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <% unless current_user.admin? %>
@@ -38,7 +38,7 @@
               <li class="divider"></li>  
               <li>
                 <%= link_to "Log out", logout_path, method: "delete" %>
-              </li>z
+              </li>
             </ul>
           </li>
         <% else %>

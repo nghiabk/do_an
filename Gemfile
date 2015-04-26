@@ -15,6 +15,7 @@ gem 'fog',                     '1.23.0'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bcrypt',               '3.1.7'
+gem 'thread_safe'
 
 gem 'sass-rails',           '5.0.0.beta1'
 gem 'uglifier',             '2.5.3'

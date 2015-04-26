@@ -17,10 +17,6 @@
       <%= f.label "State" %>
       <%= f.select(:state, options_for_select([['true',1],['false',0]])) %>
 
-      <%= f.label "Teacher" %>
-      <%= f.text_field :teacher, placeholder: "Teacher", 
-      class: "form-control" %><br>
-
       <%= f.label "Semester" %>
       <%= f.select(:semester, options_for_select([['20101',20101],['20102',20102],
       ['20111',20111],['20112',20112],['20121',20121],['20122',20122],['20131',20131]]), 

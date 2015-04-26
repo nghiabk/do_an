@@ -2,13 +2,13 @@
 <%= link_to "Create course", new_admin_course_path %>
 <br><br>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="filter_faculty">
     <%= form_tag admin_courses_path, method: :get do |f| %>
       <strong>Faculty</strong>
       <%= select_tag :faculty_id, options_from_collection_for_select(Faculty.all.collect,"id","name"), prompt: "All", class: "form-control" %>
       <%= submit_tag "Filter", class: "btn btn-primary" %>
     <% end %><br><br>
-  </div>
+  </div><br><br>
 </div>
 <table border="1" >
   <tr>
@@ -19,13 +19,11 @@
     <td><b>Min</b></td>
     <td><b>Da dang ky</b></td>
     <td><b>Trang thai</b></td>
-    <td><b>Giao vien</b></td>
     <td><b>Mon hoc</b></td>
     <td><b>Tin chi</b></td>
     <td><b>Thu</b></td>
     <td><b> Time </b></td>
     <td><b> Sua </b></td>
-    <td><b> Xoa </b></td>
   </tr>
   <%= render @courses %>
   <%= will_paginate %>

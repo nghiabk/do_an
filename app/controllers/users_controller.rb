@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update]
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find params[:id]
     
@@ -18,6 +22,11 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def import
+    User.import(params[:file])
+    redirect_to users_url, notice: "Products imported."
   end
 
   private 

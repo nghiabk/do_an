@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:admin,@fee] do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+
+     	<%= f.label "Semester" %>
+      <%= f.select :semester, options_for_select([['20101',20101],['20102',20102],
+      ['20111',20111],['20112',20112],['20121',20121],['20122',20122],['20131',20131],
+      ['20132',20132]]) %>
+
+      <%= f.label "Name" %>
+      <%= f.select(:user_id, options_from_collection_for_select(@users,"id","name"), class: "form-control") %>
+
+      <%= f.submit "Create score", class: "btn btn-primary" %> 
+    <% end %>
+  </div>
+</div>

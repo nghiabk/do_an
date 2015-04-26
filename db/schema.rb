@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408143719) do
+ActiveRecord::Schema.define(version: 20150426032217) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "credit"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20150408143719) do
     t.integer  "count"
     t.string   "address"
     t.string   "specialized"
-    t.date     "start_year"
-    t.date     "end_year"
+    t.string   "start_year"
+    t.string   "end_year"
     t.integer  "semester"
     t.integer  "faculty_id"
     t.datetime "created_at",  null: false
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20150408143719) do
     t.integer  "day"
     t.integer  "start_period"
     t.integer  "end_period"
-    t.string   "teacher"
     t.integer  "subject_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
@@ -86,17 +85,29 @@ ActiveRecord::Schema.define(version: 20150408143719) do
     t.integer  "cost",         default: 100000
     t.integer  "total_credit"
     t.integer  "total_money"
+    t.boolean  "submit_fee",   default: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
-    t.string   "released_on"
     t.integer  "price"
+    t.string   "released_on"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "programs", force: :cascade do |t|
+    t.integer  "semester"
+    t.integer  "class_student_id"
+    t.integer  "subject_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "programs", ["class_student_id"], name: "index_programs_on_class_student_id"
+  add_index "programs", ["subject_id"], name: "index_programs_on_subject_id"
 
   create_table "requests", force: :cascade do |t|
     t.string   "class_name"
@@ -119,6 +130,7 @@ ActiveRecord::Schema.define(version: 20150408143719) do
     t.integer  "faculty_id"
     t.integer  "credit"
     t.string   "name"
+    t.integer  "semester"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -129,12 +141,12 @@ ActiveRecord::Schema.define(version: 20150408143719) do
     t.float    "finish_score"
     t.integer  "semester"
     t.integer  "credit"
-    t.boolean  "again",        default: false
+    t.boolean  "again"
     t.integer  "activity_id"
     t.integer  "user_id"
     t.integer  "score_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "table_scores", ["score_id"], name: "index_table_scores_on_score_id"
@@ -159,11 +171,16 @@ ActiveRecord::Schema.define(version: 20150408143719) do
     t.string   "password_digest"
     t.string   "remember_digest"
     t.string   "email"
-    t.datetime "start_date"
-    t.datetime "birth_day"
-    t.integer  "faculty_id"
+    t.date     "start_year"
+    t.date     "birth_day"
     t.boolean  "admin"
+    t.integer  "faculty_id"
     t.integer  "class_student_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
+
+  add_index "users", ["class_student_id"], name: "index_users_on_class_student_id"
+  add_index "users", ["faculty_id"], name: "index_users_on_faculty_id"
 
 end

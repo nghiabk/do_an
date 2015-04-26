@@ -1,12 +1,12 @@
 <% provide(:title, "Course") %>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="filter_faculty">
     <%= form_tag courses_path, method: :get do |f| %>
       <strong>Faculty</strong>
       <%= select_tag :faculty_id, options_from_collection_for_select(Faculty.all.collect,"id","name"), prompt: "All", class: "form-control" %>
       <%= submit_tag "Filter", class: "btn btn-primary" %>
     <% end %><br><br>
-  </div>
+  </div><br><br>
 </div>
 <table border="1" >
   <tr>

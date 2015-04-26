@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  # attr_accessible :name, :price, :released_on
+
   def index
     @products = Product.all
     respond_to do |format|
@@ -9,7 +11,12 @@ class ProductsController < ApplicationController
   end
 
   def import
-    Product.import(params[:file])
+    Product.import params[:file] 
     redirect_to root_url, notice: "Products imported."
+  end
+
+  private 
+  def product_params
+     params.require(:product).permit :name, :price, :released_on
   end
 end

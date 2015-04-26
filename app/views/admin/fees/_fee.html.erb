@@ -5,5 +5,7 @@
   <td><%= fee.cost %></td>
   <td><%= fee.total_credit %></td>
   <td><%= fee.total_money %></td>
-  <td><%= fee.submit_fee %></td>
+  <td>
+  <%= link_to "#{fee.submit_fee}", edit_admin_fee_path(fee) %>
+  </td>
 </tr>

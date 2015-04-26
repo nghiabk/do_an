@@ -6,7 +6,7 @@
   <td><%= course.min %></td>
   <td><%= course.count %></td>
   <td><%= course.state %></td>
-  <td><%= course.teacher %></td>
+
   <td><%= course.subject.name %></td>
   <td><%= course.subject.credit %></td>
   <td><%= course.day %></td>
@@ -14,5 +14,4 @@
     <%= course.start_period %> - <%= course.end_period %>
   </td>
   <td><%= link_to "Edit", edit_admin_course_path(course) %></td>
-  <td><%= link_to "Delete", course, method: :delete, data: {confirm: "are you sure?"} %></td>
 </tr>

@@ -6,6 +6,7 @@ class CreateFees < ActiveRecord::Migration
       t.integer :cost, default: 100000
       t.integer :total_credit
       t.integer :total_money
+      t.boolean :submit_fee, default: false
 
       t.timestamps null: false
     end

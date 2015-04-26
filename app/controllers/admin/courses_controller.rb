@@ -1,54 +1,66 @@
 class Admin::CoursesController < Admin::BaseAdminController
-	def index
-		if params[:faculty_id].blank?
+  def index
+    if params[:faculty_id].blank?
       @courses = Course.paginate page: params[:page], per_page: 15
     else
       @faculty = Faculty.find params[:faculty_id]
       @courses = @faculty.courses.paginate page: params[:page], per_page: 15
     end
-	end
+  end
 
-	def new
-		@course = Course.new
-	end
+  def new
+    @course = Course.new
+  end
 
-	def create
-		@course = Course.new course_params
-    users = User.where class_student_id: params[:course][:class_student_id]
-    @course.count = users.size
-
-    if @course.save
-      @score = Score.new subject_id: @course.subject_id, semester: @course.semester,
-      credit: @course.subject.credit, course_id: @course.id
-      @score.save
-
-      users.each do |user|
-        @activity = Activity.new user: user, course: @course,
-        subject_id: @course.subject_id, semester: @course.semester,
-        end_period: @course.end_period, start_period: @course.start_period,
-        credit: @course.subject.credit, day: @course.day
-        if Activity.find_by subject_id: @course.subject_id, user_id: user
-          @activity.again = "true"
-        else
-          @activity.again = "false" 
-        end
-        @activity.save
-        @score = Score.find_by course_id: @course
-        @table_score = TableScore.new user: user, score: @score, again: @activity.again,
-        semester: @course.semester, credit: @course.subject.credit, activity: @activity
-        @table_score.save
+  def create 
+    @subjects = Subject.all
+    @subjects.each do |subject|
+      @class_student = ClassStudent.where faculty_id: subject.faculty_id
+      @class_student.each do |class_student|
+        @course = Course.new subject_id: subject.id, semester: subject.semester,
+                             class_student_id: class_student.id
+        @course.save
       end
-      redirect_to admin_courses_url
-    else
-      render 'new'
     end
-	end
+    redirect_to root_url
+  end
+  # def create
+  #   @course = Course.new course_params
+  #   users = User.where class_student_id: params[:course][:class_student_id]
+  #   @course.count = users.size
 
-	def edit
-		@course = Course.find params[:id]
-	end
+  #   if @course.save
+  #     @score = Score.new subject_id: @course.subject_id, semester: @course.semester,
+  #     credit: @course.subject.credit, course_id: @course.id
+  #     @score.save
 
-	def update
+  #     users.each do |user|
+  #       @activity = Activity.new user: user, course: @course,
+  #       subject_id: @course.subject_id, semester: @course.semester,
+  #       end_period: @course.end_period, start_period: @course.start_period,
+  #       credit: @course.subject.credit, day: @course.day
+  #       if Activity.find_by subject_id: @course.subject_id, user_id: user
+  #         @activity.again = "true"
+  #       else
+  #         @activity.again = "false" 
+  #       end
+  #       @activity.save
+  #       @score = Score.find_by course_id: @course
+  #       @table_score = TableScore.new user: user, score: @score, again: @activity.again,
+  #       semester: @course.semester, credit: @course.subject.credit, activity: @activity
+  #       @table_score.save
+  #     end
+  #     redirect_to admin_courses_url
+  #   else
+  #     render 'new'
+  #   end
+  # end
+
+  def edit
+    @course = Course.find params[:id]
+  end
+
+  def update
     @course = Course.find params[:id]
     @score = Score.find_by course_id: @course
     @table_score = TableScore.where score_id: @score
@@ -66,16 +78,10 @@ class Admin::CoursesController < Admin::BaseAdminController
     end
   end
 
-  def destroy
-    Course.find(params[:id]).destroy
-    flash[:success] = "Course is deleted"
-    redirect_to admin_courses_url
-  end
-
   private
-  def course_params
-    params.require(:course).permit :faculty_id, :subject_id, :start_period,
-    :end_period, :class_student_id, :state, :teacher, :semester, :max, :min, 
-    :day, scores_attributes: [:id, :semester, :credit]
-  end
+  # def course_params
+  #   params.require(:course).permit :faculty_id, :subject_id, :start_period,
+  #   :end_period, :class_student_id, :state, :semester, :max, :min, 
+  #   :day, scores_attributes: [:id, :semester, :credit]
+  # end
 end 

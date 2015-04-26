@@ -14,7 +14,6 @@ class CreateCourses < ActiveRecord::Migration
       t.integer :day
       t.integer :start_period
       t.integer :end_period
-      t.string :teacher
       t.integer :subject_id
       t.timestamps null: false
     end

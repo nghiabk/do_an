@@ -6,11 +6,15 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest
       t.string :remember_digest
       t.string :email
-      t.datetime :start_date
-      t.datetime :birth_day
-      t.integer :faculty_id
+      t.date :start_year
+      t.date :birth_day
       t.boolean :admin
-      t.integer :class_student_id
+      t.references :faculty, index: true
+      t.references :class_student, index: true
+
+      t.timestamps null: false
     end
+    add_foreign_key :users, :faculties
+    add_foreign_key :users, :class_students
   end
 end

@@ -1,6 +1,6 @@
 <div class="subject">
   <b>Môn học: </b><%= subject.name %><br>
-  <b>Tín chỉ: </b><%= subject.credit %><br>
+  <b>Credit: </b><%= subject.credit %><br>
 </div>
 <%= link_to "Edit", edit_subject_path(subject) %> |
 <%= link_to "delete", subject_path(subject), method: :delete, remote: true %>

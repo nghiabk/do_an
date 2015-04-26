@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   resources :courses
-  resources :users
+  resources :users do
+    collection { post :import }
+  end
+  
   resources :faculties
   resources :subjects
   resources :activities
@@ -30,6 +33,7 @@ Rails.application.routes.draw do
   namespace :admin do
     # root 'requests#index'
     resources :courses, except: [:show]
+    resources :fees, except: [:show]
   end
 
 end

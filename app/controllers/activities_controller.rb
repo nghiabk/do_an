@@ -48,27 +48,22 @@ class ActivitiesController < ApplicationController
       flash[:danger] = "Lop da day"
       redirect_to courses_url
     
-    elsif @course.is_finish?
+    elsif !@course.state?
       flash[:danger] = "Lop da ket thuc dang ky"
       redirect_to courses_url
     
     elsif index > 0
       flash[:danger] = "Ban da trung thoi khoa bieu"
       redirect_to courses_url
-    
     else
-      @course.increase
-      @course.update_attribute :count, @course.count
+      @course.update_attribute :count, @course.count + 1
       @activity = Activity.new user: current_user, course: @course, 
       subject_id: @course.subject_id, semester: @course.semester,
       end_period: @course.end_period, start_period: @course.start_period,
       credit: @course.subject.credit, day: @course.day
-      if Activity.find_by subject_id: @course.subject_id, user_id: current_user
-        @activity.again = "true"
-      else
-        @activity.again = "false" 
-      end
-    
+
+      Activity.find_by(subject_id: @course.subject_id, 
+      user_id: current_user) ? @activity.again = "true" : @activity.again = "false"
       @activity.save
       @score = Score.find_by course_id: @course
       @table_score = TableScore.new user: current_user, score: @score, again: @activity.again,
@@ -83,13 +78,15 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find params[:id]
     
     if @activity.course.state?
-      @activity.course.crease
-      @activity.course.update_attribute :count, @activity.course.count
+      @activity.course.update_attribute :count, @activity.course.count - 1 
       @activity.destroy
-      respond_to do |format|
-        format.html 
-        format.js
-      end
+      flash[:success] = "Bạn đã xóa lớp thành công"
+      redirect_to courses_url
+
+      # respond_to do |format|
+      #   format.html 
+      #   format.js
+      # end
     else
       flash[:danger] = "lop da het han dieu chinh"
       redirect_to courses_url

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  cpa: 1.5
-  gpa: 1.5
-  user_id: 
+  semester: 1
+  class_student_id: 
+  subject_id: 
 
 two:
-  cpa: 1.5
-  gpa: 1.5
-  user_id: 
+  semester: 1
+  class_student_id: 
+  subject_id: 

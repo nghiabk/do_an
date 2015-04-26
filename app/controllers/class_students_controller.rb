@@ -8,13 +8,19 @@ class ClassStudentsController < ApplicationController
 
   def create
     @class_student = ClassStudent.new class_student_params
-    if @class_student.save
-      flash[:success] = "Create class is success"
-      redirect_to class_students_url
-    else
-      render 'new'
-    end
+    # if @class_student.save
+    User.import params[:file]
+    #   flash[:success] = "Create class is success"
+    redirect_to class_students_url
+    # else
+    #   render 'new'
+    # end
   end
+
+  # def import
+  #   Product.import params[:file] 
+  #   redirect_to root_url, notice: "Products imported."
+  # end
 
   def new
     @class_student = ClassStudent.new
@@ -24,27 +30,27 @@ class ClassStudentsController < ApplicationController
     @class_student = ClassStudent.find params[:id]
   end
 
-  def show
-  end
-
   def update
-    @class_student = ClassStudent.find params[:id]
-    if @class_student.update_attributes class_student_params
-      flash[:success] = "student class updated"
-      redirect_to class_students_url
-    else
-      render 'edit'
-    end
+    # @class_student = ClassStudent.find params[:id]
+    User.import params[:file]
+    #   flash[:success] = "Create class is success"
+    redirect_to class_students_url
+    # if @class_student.update_attributes class_student_params
+    #   flash[:success] = "student class updated"
+    #   redirect_to class_students_url
+    # else
+    #   render 'edit'
+    # end
   end
 
-  def destroy
-    ClassStudent.find(params[:id]).destroy
-    flash[:success] = "student class is deleted"
-    redirect_to class_students_url
-  end
+  # def destroy
+  #   ClassStudent.find(params[:id]).destroy
+  #   flash[:success] = "student class is deleted"
+  #   redirect_to class_students_url
+  # end
 
   private
   def class_student_params
-    params.require(:class_student).permit  :faculty_id, :name, :specialized, :count, :start_year, :end_year
+    params.require(:class_student).permit  :faculty_id, :name, :specialized, :start_year, :end_year
   end
 end

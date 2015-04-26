@@ -14,7 +14,6 @@
         <Cell><Data ss:Type="String">Cost</Data></Cell>
         <Cell><Data ss:Type="String">Total credit</Data></Cell>
         <Cell><Data ss:Type="String">Total money</Data></Cell>
-        <Cell><Data ss:Type="String">Submit fee</Data></Cell>
       </Row>
     <% @fees.each do |fee| %>
       <Row>
@@ -25,7 +24,6 @@
         <Cell><Data ss:Type="Number"><%= fee.cost %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= fee.total_credit %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= fee.total_money %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= fee.submit_fee %></Data></Cell>
       </Row>
     <% end %>
     </Table>
